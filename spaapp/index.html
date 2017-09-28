@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="custom.css">
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="myfactory.js"></script>
+    <script src="mobilecontroller.js"></script>
+    <script src="tabletcontroller.js"></script>
+    <script src="home.html"></script>
+    <script src=mobile.html></script>
+    <script src=tablet.html></script>
+    <script src="shoe.html"></script>
+    <script src="shoecontroller.js"></script>
+    <script src="route.js"></script>
+</head>
+
+<body ng-app="myapp" >
+    <div>
+        <ul id="navmenu">
+
+            <li> <a ng-href="#/">Home</a></li>
+            <li> <a ng-href="#/mobile">Mobiles</a></li>
+            <li> <a ng-href="#/tablet">Tablets</a></li>
+            <li><a ng-href="#/cloth">Clothes</a></li>
+            <li> <a ng-href="#/shoe">Shoes</a></li>
+        </ul>
+    </div>
+    <div id="main">
+        <ng-view></ng-view>
+    </div>
+</body>
+</html>

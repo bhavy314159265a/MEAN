@@ -1,0 +1,19 @@
+app.config(function($routeProvider){
+    $routeProvider.when("/",{
+        templateUrl:"home.html"})
+    .when("mobile",{
+        templateUrl:"mobile.html"
+    })
+    .when("tablet",{
+        templateUrl:"tablet.html"
+    })
+    .when("shoes",{
+        templateUrl:"shoes.html"
+    })
+    .when("clothes",{
+        templateUrl:"clothes.html"
+    })
+    .when("aboutus",{
+        templateUrl:"aboutus.html"
+    })
+    })

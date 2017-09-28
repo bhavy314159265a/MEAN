@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src = "/jsmvcapp/model/model.js"></script>
+    <script src ="/jsmvcapp/controller/controller.js"></script>
+</head>
+<body>
+    <fieldset>
+        <legend>emp details</legend>
+        <table border = 1>
+            <tr>
+                <td><label for="">Id</label></td>
+                <td><label id ="empid"></td>
+            </tr>
+            <tr>
+                <td><label for="">Name</label></td>
+                <td><input class = "clearall" placeholder = "type name here" id = "name" type="text"></td>
+            </tr>
+            <tr>
+                <td><label for="">Salary</label></td>
+                <td><input class = "clearall" placeholder="type salary here" id = "salary"type="text"></td>
+            </tr>
+        </table>
+            <button id = "add">add</button>
+    <button>delete</button>
+    <button>search</button>
+    <hr>
+    <p>No of records added <span id="noofrecords"></span> </p>
+    
+    </fieldset>
+    <fieldset>
+        <legend>emp list</legend>
+        <table border = 1>
+            <thead><tr>
+                <td>id</td>
+                <td>name</td>
+                <td>salary</td>
+                <td>operations</td>
+            </tr></thead>
+            <tbody id = "empdata"></tbody>
+        </table>
+
+        
+    </fieldset>
+
+</body>
+</html>

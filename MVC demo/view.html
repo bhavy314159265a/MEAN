@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GREET APP</title>
+    <script src = "libs/angular.min.js"></script>
+    <script src = "app.js"></script>
+    <script src = "model.js"></script>
+    <script src = "controller.js"></script>
+</head>
+<body ng-app="greetapp">
+   <div ng-controller = "greetctrl">
+    <h1>Greet app</h1>
+    <label for="">First name:</label>
+    <input type="text" ng-model="fname"><br>
+    <label for="">Last name:</label>
+    <input type="text" ng-model = "lname"><br>
+    <button ng-click ="sayHello()">greet</button><button>clear</button>
+    <h1>{{fullname}}</h1>
+    </div>
+</body>
+</html>

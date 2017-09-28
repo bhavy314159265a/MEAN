@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("salaryapp", []);
+        app.controller("salarycontroller", function($scope, salaryfactory) {
+            $scope.calculate = function() {
+                var sal = $scope.salary;
+                salaryfactory.compute(sal);
+                $scope.hra = salaryfactory.hra;
+                $scope.da = salaryfactory.da;
+                $scope.ta = salaryfactory.ta;
+                $scope.pf = salaryfactory.pf;
+                $scope.ns = salaryfactory.ns;
+
+            }
+        })
+        app.factory("salaryfactory", function() {
+            var obj = {
+                hra: 0,
+                da: 0,
+                ta: 0,
+                pf: 0,
+                ns: 0,
+                tax: 0,
+                salry: 0,
+                compute: function(sal) {
+                    this.salry = parseInt(sal);
+                    this.hra = isNaN(parseInt(sal) * 0.3) ? 0 : parseInt(sal) * 0.30;
+                    this.da = isNaN(parseInt(sal) * 0.2) ? 0 : parseInt(sal) * 0.2;
+                    this.ta = isNaN(parseInt(sal) * 0.1) ? 0 : parseInt(sal) * 0.1;
+                    this.pf = isNaN(parseInt(sal) * 0.05) ? 0 : parseInt(sal) * 0.05;
+                    this.ns = isNaN(parseInt(sal) + this.hra + this.da + this.ta - this.pf) ? 0 : parseInt(sal) + this.hra + this.da + this.ta - this.pf;
+                    this.tax = isNaN(this.ns * 0.1) ? 0 : this.ns * 0.1;
+                    //console.log("TAx is ",this.tax)
+                },
+                newsal: function() {
+                    this.salry = this.ns - this.tax;
+                }
+
+            }
+            return obj;
+        })
+        app.controller("ctrl2", function($scope, salaryfactory) {
+            $scope.applytax = function() {
+                console.log("call")
+                //var Sal = salaryfactory.salry;
+                //salaryfactory.compute(Sal)
+                Tax = salaryfactory.tax;
+                $scope.tax="tax is   " +Tax;
+                salaryfactory.newsal();
+                var NewSal = salaryfactory.salry;
+                $scope.abc="Salary after tax deduction is  "+NewSal;
+                //    console.log("ctrl2 tax is",salaryfactory.tax)
+            }
+
+
+        })
+
+    </script>
+</head>
+
+<body ng-app="salaryapp">
+    <div ng-controller="salarycontroller">
+        <table border="">
+            <tr>
+                <td><label for="">Salary</label></td>
+                <td><input placeholder="Type salary" ng-init="salary=0" ng-model="salary" type="text" ng-keyup="calculate()" ng-class="del"></td>
+            </tr>
+            <tr>
+                <td><label for="">HRA</label></td>
+                <td><label ng-class="del">{{hra}}</label></td>
+            </tr>
+            <tr>
+                <td><label for="">DA</label></td>
+                <td><label>{{da}}</label></td>
+            </tr>
+            <tr>
+                <td><label for="">TA</label></td>
+                <td><label>{{ta}}</label></td>
+            </tr>
+            <tr>
+                <td><label for="">PF</label></td>
+                <td><label>{{pf}}</label></td>
+            </tr>
+            <tr>
+                <td><label for="">NS</label></td>
+                <td><label for="">{{ns}}</label></td>
+            </tr>
+
+
+        </table>
+    </div>
+    <div ng-controller="ctrl2">
+        <table>
+            <tr>
+                <td><label for="">Apply Tax</label></td>
+                <td><input type="checkbox" ng-click="applytax()"></td>
+
+            </tr>
+            <tr><td>{{tax}}</td></tr>
+        </table>
+        <hr>
+        <label for=""> {{abc}}</label>
+
+    </div>

@@ -1,0 +1,43 @@
+/* browser (js) == single thread
+angular js
+spa based full featured framework
+
+a)http request/http response(ajax0
+$http,$q(services)
+b) no dom - replace by 2 way data binding\
+<input type="text" id = "txt">
+var x =document.getelementbyid("txt").value // 1 way data binding
+<p id ="p1"></p>
+document.getelementbyid("p1").innerhtml = x //2 way data binding
+in angularjs--------
+<input type="text" ng-model="txt"> //mvvm
+<p>{{txt}}</p> // mvvm
+c) predefined directives for dom
+i)ng-class //dynamically change the class
+ii)ng-click
+iii)ng-show,ng-hide
+they r like predefined attribute
+enhance the html capability
+hence more html than js 70-30
+d) angular js can be enhanced
+custom directives 
+e) MVC
+predefined MVC
+angular is based on mvc architechture
+also on MVVM architechture (means what pattern)(model view view model)
+MVW or MV* (model view  whatever)
+f) filters(formatting)
+currency,date,asc,desc,search,case,padding
+there are also custom filterse
+g)routing - view navigation,replaces view on runtime
+h)3rd party library
+localstorage(3 way data binding)
+internationalisation
+auto complete
+i)applicaton development tools
+jasmine(unit testing) // means testing a function
+karma (cross browser testing)+auto run 
+bowser (dependecy management tool)
+gruntjs- concatenate/compression/minification-remove whitespaces
+yeoman - project structuring (control all of above mentioned)
+company saves thier standard using this

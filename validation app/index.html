@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="factory.js"></script>
+    <script src="controller.js"></script>
+
+    <style>
+        input.ng-invalid {
+            background-color: red;
+        }
+        
+        input.ng-valid {
+            background-color: green;
+        }
+
+    </style>
+
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+    <form action="" novalidate="novalidate" name="form" ng-submit="submitForm('form')">
+
+        <label for="">User id</label>
+        <input type="text" pattern="[a-zA-Z]{8,25}" name="userid" ng-model="user" required>
+        <span ng-show=" form.userid.$error.required && form.userid.$touched">This field is required</span>
+        <span ng-show="form.userid.$touched && form.userid.$error.pattern">Username should have 8-25 characters</span>
+        <br>
+        <br>
+        <!--{{form.userid}}-->
+        <label for="">Enter Password</label>
+        <input type="password" required pattern="[a-zA-Z]{7,20}[0-9]{1,}" name="password" ng-model="Pass" ng-keyup="call()">
+        <span ng-show=" form.password.$error.required && form.password.$touched">Password is not entered</span>
+        <span ng-show="form.password.$touched && form.password.$error.pattern">Password should have 8-20 characters</span>
+        <span>{{msg}}</span>
+        <br>
+        <br>
+        <label for="">Country</label>
+        <select id="" ng-mouseover="country()" ng-model="thi">
+           <option   ng-repeat="i in display" >{{i.name}}</option>
+       </select><br><br>
+
+        <label for="">City</label>
+        <select ng-mouseover="city()">
+              <option ng-repeat="i in display2">{{i.name}}</option>
+          </select>
+        <br><br>
+        <label for="" >hobbies</label><br>
+        <label ng-repeat="i in display3|limitTo:5"><input type="checkbox" name = "hobby">{{i.name}}<br></label>
+        <br>
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+
+
+</body>
+
+</html>

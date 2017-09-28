@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factory.js"></script>
+    <script>
+        app.controller("myctrl", function($scope) {
+            $scope.nsCal = function() {
+                var hra = $scope.salary * 0.30;
+                var da = $scope.salary * 0.20;
+                var ta = $scope.salary * 0.10;
+                var pf = ($scope.salary * 0.05) * 2;
+                var ns = parseFloat($scope.salary) + hra + da + ta - pf;
+                console.log(da);
+                $scope.ns = ns;
+            }
+        });
+//        app.controller("myctrl2", function($scope) {
+//            $scope.apply = function() {
+//                var tax = ns * 0.10;
+//                $scope.ns1 = ns - tax;
+//                console.log = ("21212212121");
+//            }
+//
+//        })
+
+    </script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+        <h1>TAX CALCULATOR</h1>
+        <table border="">
+            <tr>
+                <td><label for="">salary:</label></td>
+                <td><input type="text" ng-model="salary"></td>
+            </tr>
+            <tr>
+                <td><label for="">hra:</label></td>
+                <td>{{salary*0.30}}</td>
+            </tr>
+            <tr>
+                <td><label for="">da:</label></td>
+                <td>{{salary*0.20}}</td>
+            </tr>
+            <tr>
+                <td><label for="">ta:</label></td>
+                <td>{{salary*0.10}}</td>
+            </tr>
+            <tr>
+                <td><label for="">pf:</label></td>
+                <td>{{(salary*0.05)*2}}</td>
+            </tr>
+        </table>
+        <button ng-click="nsCal()">ok</button>
+        <h2>Net salary is {{ns}}</h2>
+    </div>
+    <hr>
+    <div ng-controller="myctrl2">
+       <p>Apply 10% tax <input type="checkbox"></p>
+        <table border="">
+            <tr>
+                <td><label for="">hra:</label></td>
+                <td>{{salary*0.30}}</td>
+            </tr>
+            <tr>
+                <td><label for="">da:</label></td>
+                <td>{{salary*0.20}}</td>
+            </tr>
+            <tr>
+                <td><label for="">ta:</label></td>
+                <td>{{salary*0.10}}</td>
+            </tr>
+            <tr>
+                <td><label for="">pf:</label></td>
+                <td>{{(salary*0.05)*2}}</td>
+            </tr>
+            <tr>
+                <td><label for="">ns:</label></td>
+                <td>{{ns1}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuLlu-94ajUE35OpgAcSvH1rwORYNT1nk"></script>
+    <style>
+        #map{
+            height: 800px;
+            width: 800px;
+        }
+    </style>
+       <script>
+        var app = angular.module("myapp", []);
+        app.directive("maps", function() {
+                    return {
+                        link: function(scope, element, attrs) {
+                            
+                                var mapOptions = {
+                                    center: new google.maps.LatLng(28.736691800000003,77.13213760000001),
+                                    zoom: 20,
+                                
+                                }
+                                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                            
+                        },
+                        restrict:"A"
+                    }})
+    </script>
+</head>
+
+<body ng-app="myapp">
+<div  maps id = "map"></div>
+</body>
+</html>
