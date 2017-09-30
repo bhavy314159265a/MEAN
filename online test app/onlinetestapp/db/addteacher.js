@@ -22,7 +22,7 @@ userOperation = {
                     response.send('Invalid Userid or Password');
                 }
                 else {
-                    console.log("docs is", docs[0])
+                    //console.log("docs is", docs[0])
                     //response.send('Welcome '+docs[0].userid);
                     response.render('question')
                 }
