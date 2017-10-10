@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            messages = [];
+            var socket = io.connect("http://3bd5439b.ngrok.io");
+            var field = document.getElementById("field");
+            var sendButton = document.getElementById("send");
+            var content = document.getElementById("content");
+            socket.on('message', function (data) {
+                if (data.message) {
+                    if (data.userid) {
+                        messages.push(data.message + " :: " + data.userid);
+                    }
+                    else {
+
+                        messages.push(data.message);
+                    }
+                    var html = '';
+                    for (var i = 0; i < messages.length; i++) {
+                        html += messages[i] + '<br />';
+                    }
+                    content.innerHTML = html;
+                } else {
+                    console.log("There is a problem:", data);
+                }
+            });
+            sendButton.onclick = function () {
+                var text = field.value;
+                // Event fire
+                socket.emit('send', { message: text, userid: socket.id });
+            };
+
+        })
+    </script>
+</head>
+
+<body>
+    <input id="field" type="text" placeholder="type your message here">
+    <button id='send'>send</button>
+    <div id = "content"></div>
+</body>
+
+</html>
