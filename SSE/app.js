@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 app.use(express.static("public"));
-app.get('./stream', (req, res) => {
+app.get('/stream', (req, res) => {
     res.writeHead(200, {
         'content-type': 'text/event-stream',
         'connection': 'keep-alive',

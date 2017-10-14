@@ -17,7 +17,7 @@
             socket.on('message', function (data) {
                 if (data.message) {
                     if (data.userid) {
-                        messages.push(data.message + " :: " + data.userid);
+                        messages.push(data.userid + " :: " + data.message);
                     }
                     else {
 

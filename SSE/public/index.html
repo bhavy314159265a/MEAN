@@ -6,19 +6,24 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
         <script>
+            var econnection;
         window.addEventListener("load",init);
         function init(){
+            //console.log('inside init')
         var btnconnect = document.getElementById('btnconnect');
         btnconnect.addEventListener('click',onbttnclick);
         }
         function onbttnclick(){
+           // console.log('inside onbttnclick')
         econnection = new EventSource("./stream");
-        econnection.addEventListener('filechange',mssgfromserver);
+        console.log('connection is ',econnection);
+        econnection.addEventListener('fileChange',mssgfromserver);
         }
-        function mssgfromserver(){
-        document.getElementById('mssgs').innerHTML  += '<div class="highlight">' + evtArg.data +" "+evtArg.event+ '</div>';
+        function mssgfromserver(mssg){
+            //console.log('msg is ',mssg)
+        document.getElementById('mssgs').innerHTML  += '<div class="highlight">' + mssg.data +" "+mssg.event+ '</div>';
         }
-        console.log("heyyyyyycxcxxcyyyy")
+        console.log("alklka")
         </script>
     </head>
     <body>
