@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script>
+        window.addEventListener("load",init);
+        function init(){
+        var btnconnect = document.getElementById('btnconnect');
+        btnconnect.addEventListener('click',onbttnclick);
+        }
+        function onbttnclick(){
+        econnection = new EventSource("./stream");
+        econnection.addEventListener('filechange',mssgfromserver);
+        }
+        function mssgfromserver(){
+        document.getElementById('mssgs').innerHTML  += '<div class="highlight">' + evtArg.data +" "+evtArg.event+ '</div>';
+        }
+        console.log("heyyyyyycxcxxcyyyy")
+        </script>
+    </head>
+    <body>
+        <h1>this is the example</h1>
+        <h1>server sent event example</h1>
+        <input type="button" id = 'btnconnect' value = 'connect'>
+        <div id = 'mssgs'></div>
+    </body>
+</html>

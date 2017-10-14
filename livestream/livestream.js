@@ -5,8 +5,9 @@ const express = require("express");
 var app = express();
 app.use(express.static("public"));
 app.get('/showvideo',(req,res)=>{
+	//console.log("insideapp.get....")
 res.writeHead(200,{'Content-Type': 'video/mp4'});
-	readableStream.pipe(res);
+	readablestream.pipe(res);
 //readableStream.on('data', function(chunk){
 //  console.log('Received  bytes of data.'+chunk.length);
 //});
