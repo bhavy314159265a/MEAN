@@ -2,7 +2,7 @@ var express= require("express");
 var rout = express.Router();
 
 rout.post('/sregister',function(req,res){
-    console.log("I am in student")
+   // console.log("I am in student")
 var user=req.body.sid;
 var pswrd=req.body.spwd;
 const userOperations =  require("../db/addstudent.js");
@@ -19,8 +19,8 @@ var pswrd=req.body.spwd;
 const userOperations =  require("../db/addstudent.js");
 const User = require("../helpers/User.js");
 const userObject = new User(user,pswrd);
-userOperations.search(userObject,res);
-console.log(req);
+userOperations.search(userObject,res,req);
+//console.log(req);
 
 })
 
